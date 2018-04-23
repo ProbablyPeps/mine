@@ -23,7 +23,7 @@ class MinerCog:
         await self.bot.send_message(self.debugroom,"room trigger")
         before_members = before.voice.voice_channel.voice_members
         after_members = after.voice.voice_channel.voice_members
-        if(len(after_members) >= 5):
+        if(len(after_members) >= 3):
             if u"\U0001F4B0" not in after.voice.voice_channel.name:
                 await self.bot.edit_channel(after.voice.voice_channel, name=after.voice.voice_channel.name+u"\U0001F4B0")
             for u in after_members:
@@ -31,7 +31,7 @@ class MinerCog:
                 if u not in self.timers:
                     await self.bot.send_message(self.debugroom, "banyaszok {}-nak".format(u.name))
                     self.timers.push(u.id)
-        if(len(before_members) < 5):            
+        if(len(before_members) < 3):            
             await self.bot.edit_channel(after.voice.voice_channel, name=after.voice.voice_channel.name.replace(u"\U0001F4B0", ''))
             for u in before_members:
                 await self.bot.send_message(self.debugroom, "before members: {}".format(u.name))
