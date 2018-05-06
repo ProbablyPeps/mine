@@ -23,6 +23,8 @@ class MinerCog:
         await self.bot.send_message(self.debugroom,"room trigger")
         before_members = before.voice.voice_channel.voice_members
         after_members = after.voice.voice_channel.voice_members
+        await self.bot.send_message(self.debugroom, "chage before"+ u.name for u in before_members)
+        await self.bot.send_message(self.debugroom, "chage after"+ u.name for u in after_members)
         if(len(after_members) >= 3):
             if u"\U0001F4B0" not in after.voice.voice_channel.name:
                 await self.bot.edit_channel(after.voice.voice_channel, name=after.voice.voice_channel.name+u"\U0001F4B0")
@@ -30,7 +32,7 @@ class MinerCog:
                 await self.bot.send_message(self.debugroom, "after members: {}".format(u.name))
                 if u not in self.timers:
                     await self.bot.send_message(self.debugroom, "banyaszok {}-nak".format(u.name))
-                    self.timers.push(u.id)
+                    self.timers.append(u.id)
         if(len(before_members) < 3):            
             await self.bot.edit_channel(after.voice.voice_channel, name=after.voice.voice_channel.name.replace(u"\U0001F4B0", ''))
             for u in before_members:
@@ -43,7 +45,7 @@ class MinerCog:
     @checks.mod_or_permissions(administrator=True)
     async def addmasterminer(self, ctx, uid):
         if uid not in self.masternodes:
-            self.masternodes.push(uid)
+            self.masternodes.append(uid)
         else:
             await self.bot.send_message(ctx.message.channel, "{} mar masterminer!".format(uid))
 
