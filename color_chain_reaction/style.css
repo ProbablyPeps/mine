@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-container {
+    margin-top: 1rem;
+    position: relative;
+}
+
+#game {
+    border: 2px solid #555;
+    background: #111;
+    touch-action: manipulation;
+}
+
+#score {
+    margin-top: 1rem;
+}
